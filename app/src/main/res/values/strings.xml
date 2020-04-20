@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">CC+</string>
+    <string name="tittle_name">Студенты</string>
+    <string name="title_team">Бригады</string>
+    <string name="menu_item_delete_list_data">Удалить все</string>
+    <string name="menu_item_re_create_database">Создать БД</string>
+    <string name="group_title">Имя студента</string>
+    <string name="group_physic">Бригада</string>
+    <string name="physic_number">Номер бригады</string>
+    <string name="dialog_group_title">Студент</string>
+    <string name="dialog_physic_title">Бригада</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+</resources>
