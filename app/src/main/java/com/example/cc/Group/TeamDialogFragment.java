@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.cc.AppDelegate;
 import com.example.cc.R;
 import com.example.cc.database.NameDataBase;
 import com.example.cc.database.Team;
@@ -83,18 +84,18 @@ public class TeamDialogFragment extends DialogFragment {
             return;
         }
 
-        TeamDao authorDao = NameDataBase.getDatabase(context).directorDao();
+        TeamDao teamDao = NameDataBase.getNameDataBase().groupDao();
 
         if (teamNumber != null) {
-            Team teamToUpdate = authorDao.findDirectorByName(teamNumber);
+            Team teamToUpdate = teamDao.findPhysicByName(teamNumber);
             if (teamToUpdate != null) {
                 if (!teamToUpdate.num.equals(number)) {
                     teamToUpdate.num = number;
-                    authorDao.update(teamToUpdate);
+                    teamDao.update(teamToUpdate);
                 }
             }
         } else {
-            authorDao.insert(new Team(number));
+            teamDao.insert(new Team(number));
         }
     }
 }

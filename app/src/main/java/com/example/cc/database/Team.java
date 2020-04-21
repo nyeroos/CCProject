@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
 
 public class Team {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "did")
     public int id;
 
     @ColumnInfo(name = "num")
