@@ -10,19 +10,19 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
-public interface NameDao {
-    @Query("SELECT * FROM name WHERE name = :name LIMIT 1")
-    Name findMovieByTitle(String name);
+public interface StudentDao {
+    @Query("SELECT * FROM Student WHERE full_name = :name LIMIT 1")
+    Student findGroupByTitle(String name);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Name... names);
+    void insert(Student... students);
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
-    void update(Name name);
+    void update(Student student);
 
-    @Query("DELETE FROM name")
+    @Query("DELETE FROM Student")
     void deleteAll();
 
-    @Query("SELECT * FROM name ORDER BY name ASC")
-    LiveData<List<Name>> getAllBooks();
+    @Query("SELECT * FROM Student ORDER BY full_name ASC")
+    LiveData<List<Student>> getAllStudents();
 }

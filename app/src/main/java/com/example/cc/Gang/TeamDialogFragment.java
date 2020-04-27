@@ -1,4 +1,4 @@
-package com.example.cc.Group;
+package com.example.cc.Gang;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.cc.AppDelegate;
 import com.example.cc.R;
 import com.example.cc.database.NameDataBase;
 import com.example.cc.database.Team;
@@ -24,13 +23,13 @@ public class TeamDialogFragment extends DialogFragment {
     private String teamNumber;
 
     private static final String EXTRA_TEAM_NUMBER = "team_number";
-    public static final String TAG_DIALOG_TEAM_SAVE = "team_physic_save";
+    public static final String TAG_DIALOG_TEAM_SAVE = "team_gang_save";
 
-    public static TeamDialogFragment newInstance(String directorFullName) {
+    public static TeamDialogFragment newInstance(String gangName) {
         TeamDialogFragment fragment = new TeamDialogFragment();
 
         Bundle args = new Bundle();
-        args.putString(EXTRA_TEAM_NUMBER, directorFullName);
+        args.putString(EXTRA_TEAM_NUMBER, gangName);
         fragment.setArguments(args);
 
         return fragment;
@@ -54,11 +53,11 @@ public class TeamDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-        View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_physic, null);
-        final EditText directorEditText = view.findViewById(R.id.etPhysicNumber);
+        View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_gang, null);
+        final EditText gangEditText = view.findViewById(R.id.etGangNumber);
         if (teamNumber != null) {
-            directorEditText.setText(teamNumber);
-            directorEditText.setSelection(teamNumber.length());
+            gangEditText.setText(teamNumber);
+            gangEditText.setSelection(teamNumber.length());
         }
 
         alertDialogBuilder.setView(view)
@@ -66,7 +65,7 @@ public class TeamDialogFragment extends DialogFragment {
                 .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        savePhysic(directorEditText.getText().toString());
+                        savePhysic(gangEditText.getText().toString());
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -84,10 +83,10 @@ public class TeamDialogFragment extends DialogFragment {
             return;
         }
 
-        TeamDao teamDao = NameDataBase.getNameDataBase().groupDao();
+        TeamDao teamDao = NameDataBase.getNameDataBase().getTeamDao();
 
         if (teamNumber != null) {
-            Team teamToUpdate = teamDao.findPhysicByName(teamNumber);
+            Team teamToUpdate = teamDao.findGangByName(teamNumber);
             if (teamToUpdate != null) {
                 if (!teamToUpdate.num.equals(number)) {
                     teamToUpdate.num = number;

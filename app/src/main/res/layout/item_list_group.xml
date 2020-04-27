@@ -3,9 +3,4 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.example.cc.Physic.Fragment1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </LinearLayout>

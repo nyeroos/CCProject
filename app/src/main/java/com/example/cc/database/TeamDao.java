@@ -11,11 +11,11 @@ import java.util.List;
 
 @Dao
 public interface TeamDao {
-    @Query("SELECT * FROM Team WHERE did = :id LIMIT 1")
-    Team findDirectorById(int id);
+    @Query("SELECT * FROM team WHERE did = :id LIMIT 1")
+    Team findGangById(int id);
 
-    @Query("SELECT * FROM Team WHERE num = :num LIMIT 1")
-    Team findDirectorByName(String num);
+    @Query("SELECT * FROM team WHERE num = :num LIMIT 1")
+    Team findGangByName(String num);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     long insert(Team team);
@@ -26,9 +26,9 @@ public interface TeamDao {
     @Update(onConflict = OnConflictStrategy.IGNORE)
     void update(Team team);
 
-    @Query("DELETE FROM Team")
+    @Query("DELETE FROM team")
     void deleteAll();
 
-    @Query("SELECT * FROM Team ORDER BY num ASC")
+    @Query("SELECT * FROM team ORDER BY num ASC")
     LiveData<List<Team>> getAllTeams();
 }
